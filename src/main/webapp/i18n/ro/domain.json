@@ -1,0 +1,22 @@
+{
+    "opsomedApp": {
+        "domain" : {
+            "home": {
+                "title": "Domains",
+                "createLabel": "Crează o nouă Domain",
+                "createOrEditLabel": "Crează sau editează o Domain"
+            },
+            "created": "O nouă Domain este creată cu identificatorul {{ param }}",
+            "updated": "O Domain este editată cu identificatorul {{ param }}",
+            "deleted": "O Domain este stearsă cu identificatorul {{ param }}",
+            "delete": {
+                "question": "Ești sigur că dorești să stergi Domain {{ id }}?"
+            },
+            "detail": {
+                "title": "Domain"
+            },
+            "name": "Name",
+            "description": "Description"
+        }
+    }
+}
