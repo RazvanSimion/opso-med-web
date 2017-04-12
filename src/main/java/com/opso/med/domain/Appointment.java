@@ -35,7 +35,7 @@ public class Appointment {
     @NotNull
     @Indexed
     @Field("status")
-    private Long status;
+    private Long status; //0 - Programat, -1 - Anulat, 1 - Efectuata
 
     @Field("organization")
     private Organization organization;

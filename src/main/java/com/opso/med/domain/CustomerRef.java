@@ -22,6 +22,10 @@ public class CustomerRef {
 
     private String firstName;
 
+    public CustomerRef() {
+
+    }
+
     public CustomerRef(Customer customer) {
         this.id = customer.getId();
         this.code = customer.getCode();

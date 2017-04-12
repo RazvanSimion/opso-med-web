@@ -32,7 +32,7 @@ public class Schedule {
     private ExpertRef expert;
 
     @Field("office")
-    private Office office;
+    private OfficeRef office;
     /**
      * -1 - Closed - O exceptie: O zi speciala de exemplu din saptamana in care nu se lucreaza. De exemplu luni, 24 ianuarie 2017 nu se lucreaza.
      * 0 - dayOfWeek
@@ -44,7 +44,7 @@ public class Schedule {
     @Field("day")
     private ZonedDateTime day;
 
-    @Size(max = 250)
+    @Size(max = 1000)
     @Field("reason")
     private String reason;
 
@@ -89,11 +89,11 @@ public class Schedule {
         this.expert = expert;
     }
 
-    public Office getOffice() {
+    public OfficeRef getOffice() {
         return office;
     }
 
-    public void setOffice(Office office) {
+    public void setOffice(OfficeRef office) {
         this.office = office;
     }
 

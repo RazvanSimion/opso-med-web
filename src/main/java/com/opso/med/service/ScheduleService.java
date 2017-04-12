@@ -4,11 +4,14 @@ import com.opso.med.domain.Organization;
 import com.opso.med.domain.Schedule;
 import com.opso.med.repository.OrganizationRepository;
 import com.opso.med.repository.ScheduleRepository;
+import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Service Implementation for managing Domain.
@@ -68,5 +71,20 @@ public class ScheduleService {
     public void delete(String id) {
         log.debug("Request to delete Entity : {}", id);
         scheduleRepository.delete(id);
+    }
+
+    public List<Schedule> findByExpertId(String expertId) {
+
+        return scheduleRepository.findByExpertId(new ObjectId(expertId));
+    }
+
+    public List<Schedule> findByOfficeId(String expertId) {
+
+        return scheduleRepository.findByExpertId(new ObjectId(expertId));
+    }
+
+    public List<Schedule> findByOffficeIdAndExpertId(String officeId, String expertId) {
+
+        return scheduleRepository.findByOfficeIdAndExpertId(new ObjectId(officeId), new ObjectId(expertId));
     }
 }

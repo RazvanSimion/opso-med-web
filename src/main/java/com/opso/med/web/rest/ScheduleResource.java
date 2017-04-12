@@ -95,6 +95,51 @@ public class ScheduleResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
+
+    /**
+     * GET  /schedules/expert/{expertId} : get all the schedules of an expert.
+     *
+     * @param expertId the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of schedules in body
+     */
+    @GetMapping("/schedules/expert/{expertId}")
+    @Timed
+    public ResponseEntity<List<Schedule>> findByExpertId(@PathVariable String expertId) {
+        log.debug("REST request to get a page of Schedules");
+        List<Schedule> schedules = scheduleService.findByExpertId(expertId);
+        return new ResponseEntity<>(schedules, HttpStatus.OK);
+    }
+
+
+    /**
+     * GET  /schedules/office/{officeId} : get all the schedules of an expert.
+     *
+     * @param officeId the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of schedules in body
+     */
+    @GetMapping("/schedules/office/{officeId}")
+    @Timed
+    public ResponseEntity<List<Schedule>> findByOfficeId(@PathVariable String officeId) {
+        log.debug("REST request to get a page of Schedules");
+        List<Schedule> schedules = scheduleService.findByOfficeId(officeId);
+        return new ResponseEntity<>(schedules, HttpStatus.OK);
+    }
+
+
+    /**
+     * GET  /schedules/query : get all the schedules of an expert.
+     *
+     * @param officeId the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of schedules in body
+     */
+    @GetMapping("/schedules/query")
+    @Timed
+    public ResponseEntity<List<Schedule>> query(@RequestParam(name = "office", required = false) String officeId, @RequestParam(name = "expert", required = false) String expertId) {
+        log.debug("REST request to get a page of Schedules");
+        List<Schedule> schedules = scheduleService.findByOffficeIdAndExpertId(officeId,expertId);
+        return new ResponseEntity<>(schedules, HttpStatus.OK);
+    }
+
     /**
      * GET  /schedules/:id : get the "id" schedule.
      *

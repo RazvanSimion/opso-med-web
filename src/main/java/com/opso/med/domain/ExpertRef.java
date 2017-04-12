@@ -22,6 +22,9 @@ public class ExpertRef {
 
     private String firstName;
 
+    public ExpertRef() {
+    }
+
     public ExpertRef(Expert expert) {
         this.id = expert.getId();
         this.code = expert.getCode();
