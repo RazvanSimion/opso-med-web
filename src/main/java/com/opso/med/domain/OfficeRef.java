@@ -14,34 +14,30 @@ import java.util.Set;
 /**
  * Created by Razvan.Simion on 4/11/2017.
  */
-@Document(collection = "office")
-public class Office {
+public class OfficeRef {
     private static final long serialVersionUID = 1L;
 
-    @Id
     private String id;
 
-    @NotNull
-    @Indexed
-    @Size(max = 250)
-    @Field("name")
     private String name;
 
-    @Size(max = 1000)
-    @Field("description")
     private String description;
 
-    @NotNull
-    @Field("position")
-    @GeoSpatialIndexed
     private double[] position;
 
-    @Field("contacts")
-    private Set<Contact> contacts;
-
-    @Field("organization")
     private Organization organization;
 
+
+    public OfficeRef() {
+    }
+
+    public OfficeRef(String id, String name, String description, double[] position, Organization organization) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.position = position;
+        this.organization = organization;
+    }
 
     public String getId() {
         return id;
@@ -75,14 +71,6 @@ public class Office {
         this.position = position;
     }
 
-    public Set<Contact> getContacts() {
-        return contacts;
-    }
-
-    public void setContacts(Set<Contact> contacts) {
-        this.contacts = contacts;
-    }
-
     public Organization getOrganization() {
         return organization;
     }
@@ -94,16 +82,16 @@ public class Office {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Office)) return false;
+        if (!(o instanceof OfficeRef)) return false;
 
-        Office office = (Office) o;
+        OfficeRef officeRef = (OfficeRef) o;
 
-        if (id != null ? !id.equals(office.id) : office.id != null) return false;
-        if (name != null ? !name.equals(office.name) : office.name != null) return false;
-        if (description != null ? !description.equals(office.description) : office.description != null) return false;
-        if (!Arrays.equals(position, office.position)) return false;
-        if (contacts != null ? !contacts.equals(office.contacts) : office.contacts != null) return false;
-        return organization != null ? organization.equals(office.organization) : office.organization == null;
+        if (id != null ? !id.equals(officeRef.id) : officeRef.id != null) return false;
+        if (name != null ? !name.equals(officeRef.name) : officeRef.name != null) return false;
+        if (description != null ? !description.equals(officeRef.description) : officeRef.description != null)
+            return false;
+        if (!Arrays.equals(position, officeRef.position)) return false;
+        return organization != null ? organization.equals(officeRef.organization) : officeRef.organization == null;
 
     }
 
@@ -113,19 +101,17 @@ public class Office {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + Arrays.hashCode(position);
-        result = 31 * result + (contacts != null ? contacts.hashCode() : 0);
         result = 31 * result + (organization != null ? organization.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "Office{" +
+        return "OfficeRef{" +
             "id='" + id + '\'' +
             ", name='" + name + '\'' +
             ", description='" + description + '\'' +
             ", position=" + Arrays.toString(position) +
-            ", contacts=" + contacts +
             ", organization=" + organization +
             '}';
     }

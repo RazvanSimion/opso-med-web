@@ -28,6 +28,11 @@ public class Schedule {
     @Field("close_hour")
     private Long closeHour;
 
+    @Field("expert")
+    private ExpertRef expert;
+
+    @Field("office")
+    private Office office;
     /**
      * -1 - Closed - O exceptie: O zi speciala de exemplu din saptamana in care nu se lucreaza. De exemplu luni, 24 ianuarie 2017 nu se lucreaza.
      * 0 - dayOfWeek
@@ -42,6 +47,7 @@ public class Schedule {
     @Size(max = 250)
     @Field("reason")
     private String reason;
+
 
     public String getId() {
         return id;
@@ -75,6 +81,22 @@ public class Schedule {
         this.closeHour = closeHour;
     }
 
+    public ExpertRef getExpert() {
+        return expert;
+    }
+
+    public void setExpert(ExpertRef expert) {
+        this.expert = expert;
+    }
+
+    public Office getOffice() {
+        return office;
+    }
+
+    public void setOffice(Office office) {
+        this.office = office;
+    }
+
     public Long getType() {
         return type;
     }
@@ -100,47 +122,50 @@ public class Schedule {
     }
 
     @Override
-    public String toString() {
-        return "Schedule{" +
-            "id='" + id + '\'' +
-            ", dayOfWeek=" + dayOfWeek +
-            ", openHour=" + openHour +
-            ", closeHour=" + closeHour +
-            ", type=" + type +
-            ", day=" + day +
-            ", reason='" + reason + '\'' +
-            '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Schedule)) return false;
 
         Schedule schedule = (Schedule) o;
 
-        if (getId() != null ? !getId().equals(schedule.getId()) : schedule.getId() != null) return false;
-        if (getDayOfWeek() != null ? !getDayOfWeek().equals(schedule.getDayOfWeek()) : schedule.getDayOfWeek() != null)
-            return false;
-        if (getOpenHour() != null ? !getOpenHour().equals(schedule.getOpenHour()) : schedule.getOpenHour() != null)
-            return false;
-        if (getCloseHour() != null ? !getCloseHour().equals(schedule.getCloseHour()) : schedule.getCloseHour() != null)
-            return false;
-        if (getType() != null ? !getType().equals(schedule.getType()) : schedule.getType() != null) return false;
-        if (getDay() != null ? !getDay().equals(schedule.getDay()) : schedule.getDay() != null) return false;
-        return getReason() != null ? getReason().equals(schedule.getReason()) : schedule.getReason() == null;
+        if (id != null ? !id.equals(schedule.id) : schedule.id != null) return false;
+        if (dayOfWeek != null ? !dayOfWeek.equals(schedule.dayOfWeek) : schedule.dayOfWeek != null) return false;
+        if (openHour != null ? !openHour.equals(schedule.openHour) : schedule.openHour != null) return false;
+        if (closeHour != null ? !closeHour.equals(schedule.closeHour) : schedule.closeHour != null) return false;
+        if (expert != null ? !expert.equals(schedule.expert) : schedule.expert != null) return false;
+        if (office != null ? !office.equals(schedule.office) : schedule.office != null) return false;
+        if (type != null ? !type.equals(schedule.type) : schedule.type != null) return false;
+        if (day != null ? !day.equals(schedule.day) : schedule.day != null) return false;
+        return reason != null ? reason.equals(schedule.reason) : schedule.reason == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = getId() != null ? getId().hashCode() : 0;
-        result = 31 * result + (getDayOfWeek() != null ? getDayOfWeek().hashCode() : 0);
-        result = 31 * result + (getOpenHour() != null ? getOpenHour().hashCode() : 0);
-        result = 31 * result + (getCloseHour() != null ? getCloseHour().hashCode() : 0);
-        result = 31 * result + (getType() != null ? getType().hashCode() : 0);
-        result = 31 * result + (getDay() != null ? getDay().hashCode() : 0);
-        result = 31 * result + (getReason() != null ? getReason().hashCode() : 0);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (dayOfWeek != null ? dayOfWeek.hashCode() : 0);
+        result = 31 * result + (openHour != null ? openHour.hashCode() : 0);
+        result = 31 * result + (closeHour != null ? closeHour.hashCode() : 0);
+        result = 31 * result + (expert != null ? expert.hashCode() : 0);
+        result = 31 * result + (office != null ? office.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (day != null ? day.hashCode() : 0);
+        result = 31 * result + (reason != null ? reason.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Schedule{" +
+            "id='" + id + '\'' +
+            ", dayOfWeek=" + dayOfWeek +
+            ", openHour=" + openHour +
+            ", closeHour=" + closeHour +
+            ", expert=" + expert +
+            ", office=" + office +
+            ", type=" + type +
+            ", day=" + day +
+            ", reason='" + reason + '\'' +
+            '}';
     }
 }
