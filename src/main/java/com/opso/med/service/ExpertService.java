@@ -10,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Service Implementation for managing Domain.
  */
@@ -45,6 +47,12 @@ public class ExpertService {
     public Page<Expert> findAll(Pageable pageable) {
         log.debug("Request to get all Entities");
         Page<Expert> result = expertRepository.findAll(pageable);
+        return result;
+    }
+
+    public List<Expert> findAll() {
+        log.debug("Request to get all Entities");
+        List<Expert> result = expertRepository.findAll();
         return result;
     }
 

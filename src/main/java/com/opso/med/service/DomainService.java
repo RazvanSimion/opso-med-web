@@ -17,7 +17,7 @@ import java.util.List;
 public class DomainService {
 
     private final Logger log = LoggerFactory.getLogger(DomainService.class);
-    
+
     private final DomainRepository domainRepository;
 
     public DomainService(DomainRepository domainRepository) {
@@ -38,13 +38,19 @@ public class DomainService {
 
     /**
      *  Get all the domains.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
     public Page<Domain> findAll(Pageable pageable) {
         log.debug("Request to get all Domains");
         Page<Domain> result = domainRepository.findAll(pageable);
+        return result;
+    }
+
+    public List<Domain> findAll() {
+        log.debug("Request to get all Domains");
+        List<Domain> result = domainRepository.findAll();
         return result;
     }
 

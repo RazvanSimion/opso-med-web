@@ -6,11 +6,13 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.*;
 
+import java.io.Serializable;
+
 /**
  * Created by Razvan.Simion on 4/11/2017.
  */
 @Document(collection = "contact")
-public class Contact {
+public class Contact implements Serializable {
 
     @Id
     private String id;

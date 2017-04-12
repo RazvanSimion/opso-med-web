@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.Set;
 
@@ -21,11 +22,11 @@ public class Investigation {
 
     @NotNull
     @Field("start_ts")
-    private ZonedDateTime startTs;
+    private LocalDateTime startTs;
 
     @NotNull
     @Field("end_ts")
-    private ZonedDateTime endTs;
+    private LocalDateTime endTs;
 
     @NotNull
     @Field("status")
@@ -68,6 +69,7 @@ public class Investigation {
     @Field("notes")
     private Set<String> notes;
 
+
     public String getId() {
         return id;
     }
@@ -76,19 +78,19 @@ public class Investigation {
         this.id = id;
     }
 
-    public ZonedDateTime getStartTs() {
+    public LocalDateTime getStartTs() {
         return startTs;
     }
 
-    public void setStartTs(ZonedDateTime startTs) {
+    public void setStartTs(LocalDateTime startTs) {
         this.startTs = startTs;
     }
 
-    public ZonedDateTime getEndTs() {
+    public LocalDateTime getEndTs() {
         return endTs;
     }
 
-    public void setEndTs(ZonedDateTime endTs) {
+    public void setEndTs(LocalDateTime endTs) {
         this.endTs = endTs;
     }
 

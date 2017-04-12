@@ -21,10 +21,14 @@ spring:
         serialization.write_dates_as_timestamps: false
     cache:
         type: none
+    #data:
+    #    mongodb:
+    #        host: localhost
+    #        port: 27017
+    #        database: opsomed
     data:
         mongodb:
-            host: localhost
-            port: 27117
+            uri: mongodb://localhost:27017
             database: opsomed
     mail:
         host: localhost

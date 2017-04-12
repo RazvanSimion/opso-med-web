@@ -9,6 +9,8 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.Set;
 
@@ -16,7 +18,7 @@ import java.util.Set;
  * Created by Razvan.Simion on 4/11/2017.
  */
 @Document(collection = "appointment")
-public class Appointment {
+public class Appointment implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -25,12 +27,12 @@ public class Appointment {
     @NotNull
     @Indexed
     @Field("start_ts")
-    private ZonedDateTime startTs;
+    private LocalDateTime startTs;
 
     @NotNull
     @Indexed
     @Field("end_ts")
-    private ZonedDateTime endTs;
+    private LocalDateTime endTs;
 
     @NotNull
     @Indexed
@@ -68,19 +70,19 @@ public class Appointment {
         this.id = id;
     }
 
-    public ZonedDateTime getStartTs() {
+    public LocalDateTime getStartTs() {
         return startTs;
     }
 
-    public void setStartTs(ZonedDateTime startTs) {
+    public void setStartTs(LocalDateTime startTs) {
         this.startTs = startTs;
     }
 
-    public ZonedDateTime getEndTs() {
+    public LocalDateTime getEndTs() {
         return endTs;
     }
 
-    public void setEndTs(ZonedDateTime endTs) {
+    public void setEndTs(LocalDateTime endTs) {
         this.endTs = endTs;
     }
 

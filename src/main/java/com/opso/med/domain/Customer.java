@@ -8,13 +8,14 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
  * Created by Razvan.Simion on 4/11/2017.
  */
 @Document(collection = "customer")
-public class Customer {
+public class Customer implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id

@@ -6,6 +6,9 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZonedDateTime;
 import java.util.Date;
 
@@ -23,10 +26,10 @@ public class Schedule {
     private Long dayOfWeek;
 
     @Field("open_hour")
-    private Long openHour;
+    private LocalTime openHour;
 
     @Field("close_hour")
-    private Long closeHour;
+    private LocalTime closeHour;
 
     @Field("expert")
     private ExpertRef expert;
@@ -42,7 +45,7 @@ public class Schedule {
     private Long type;
 
     @Field("day")
-    private ZonedDateTime day;
+    private LocalDate day;
 
     @Size(max = 1000)
     @Field("reason")
@@ -65,19 +68,19 @@ public class Schedule {
         this.dayOfWeek = dayOfWeek;
     }
 
-    public Long getOpenHour() {
+    public LocalTime getOpenHour() {
         return openHour;
     }
 
-    public void setOpenHour(Long openHour) {
+    public void setOpenHour(LocalTime openHour) {
         this.openHour = openHour;
     }
 
-    public Long getCloseHour() {
+    public LocalTime getCloseHour() {
         return closeHour;
     }
 
-    public void setCloseHour(Long closeHour) {
+    public void setCloseHour(LocalTime closeHour) {
         this.closeHour = closeHour;
     }
 
@@ -105,11 +108,11 @@ public class Schedule {
         this.type = type;
     }
 
-    public ZonedDateTime getDay() {
+    public LocalDate getDay() {
         return day;
     }
 
-    public void setDay(ZonedDateTime day) {
+    public void setDay(LocalDate day) {
         this.day = day;
     }
 

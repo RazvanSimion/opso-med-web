@@ -7,13 +7,14 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
  * Created by Razvan.Simion on 4/11/2017.
  */
 @Document(collection = "expert")
-public class Expert {
+public class Expert implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -46,6 +47,7 @@ public class Expert {
     @Field("services")
     private Set<Service> services;
 
+
     public String getId() {
         return id;
     }
@@ -54,6 +56,10 @@ public class Expert {
         this.id = id;
     }
 
+    public Expert code(String code) {
+        this.code = code;
+        return this;
+    }
     public String getCode() {
         return code;
     }
@@ -69,7 +75,10 @@ public class Expert {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
+    public Expert lastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
     public String getFirstName() {
         return firstName;
     }
@@ -77,7 +86,10 @@ public class Expert {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
+    public Expert firstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
     public Contact getContact() {
         return contact;
     }
