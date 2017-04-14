@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.Year;
 import java.time.ZonedDateTime;
 import java.util.Set;
 
@@ -23,6 +24,11 @@ public class Availability implements Serializable {
 
     @NotNull
     @Indexed
+    @Field("year")
+    private int year;
+
+    @NotNull
+    @Indexed
     @Field("start_ts")
     private LocalDateTime startTs;
 
@@ -31,6 +37,18 @@ public class Availability implements Serializable {
     @Field("end_ts")
     private LocalDateTime endTs;
 
+
+    @Field("appointment")
+    @Indexed
+    private boolean appointment;
+
+    @Field("schedule")
+    @Indexed
+    private boolean schedule;
+
+    @Field("available")
+    @Indexed
+    private boolean available;
 
     @Field("organization")
     private Organization organization;
@@ -56,6 +74,9 @@ public class Availability implements Serializable {
     public void setStartTs(LocalDateTime startTs) {
         this.startTs = startTs;
     }
+    public Availability startTs(LocalDateTime startTs) {
+        this.startTs = startTs;return this;
+    }
 
     public LocalDateTime getEndTs() {
         return endTs;
@@ -65,12 +86,20 @@ public class Availability implements Serializable {
         this.endTs = endTs;
     }
 
+    public Availability endTs(LocalDateTime endTs) {
+        this.endTs = endTs;return this;
+    }
     public Organization getOrganization() {
         return organization;
     }
 
     public void setOrganization(Organization organization) {
         this.organization = organization;
+    }
+
+    public Availability organization(Organization organization) {
+        this.organization = organization;
+        return this;
     }
 
     public OfficeRef getOffice() {
@@ -81,12 +110,74 @@ public class Availability implements Serializable {
         this.office = office;
     }
 
+    public Availability office(OfficeRef office) {
+        this.office = office;
+        return this;
+    }
+
     public ExpertRef getExpert() {
         return expert;
     }
 
     public void setExpert(ExpertRef expert) {
         this.expert = expert;
+    }
+
+    public Availability expert(ExpertRef expert) {
+        this.expert = expert;
+        return this;
+    }
+
+    public boolean isAppointment() {
+        return appointment;
+    }
+
+    public void setAppointment(boolean appointment) {
+        this.appointment = appointment;
+    }
+
+    public Availability appointment(boolean appointment) {
+        this.appointment = appointment;
+        return this;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    public Availability available(boolean available) {
+        this.available = available;
+        return this;
+    }
+
+    public boolean isSchedule() {
+        return schedule;
+    }
+
+    public Availability schedule(boolean schedule) {
+        this.schedule = schedule;
+        return this;
+    }
+
+    public void setSchedule(boolean schedule) {
+        this.schedule = schedule;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public Availability year(int year) {
+        this.year = year;
+        return this;
     }
 
     @Override
@@ -96,23 +187,32 @@ public class Availability implements Serializable {
 
         Availability that = (Availability) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (startTs != null ? !startTs.equals(that.startTs) : that.startTs != null) return false;
-        if (endTs != null ? !endTs.equals(that.endTs) : that.endTs != null) return false;
-        if (organization != null ? !organization.equals(that.organization) : that.organization != null) return false;
-        if (office != null ? !office.equals(that.office) : that.office != null) return false;
-        return expert != null ? expert.equals(that.expert) : that.expert == null;
+        if (getYear() != that.getYear()) return false;
+        if (isAppointment() != that.isAppointment()) return false;
+        if (isSchedule() != that.isSchedule()) return false;
+        if (isAvailable() != that.isAvailable()) return false;
+        if (getId() != null ? !getId().equals(that.getId()) : that.getId() != null) return false;
+        if (getStartTs() != null ? !getStartTs().equals(that.getStartTs()) : that.getStartTs() != null) return false;
+        if (getEndTs() != null ? !getEndTs().equals(that.getEndTs()) : that.getEndTs() != null) return false;
+        if (getOrganization() != null ? !getOrganization().equals(that.getOrganization()) : that.getOrganization() != null)
+            return false;
+        if (getOffice() != null ? !getOffice().equals(that.getOffice()) : that.getOffice() != null) return false;
+        return getExpert() != null ? getExpert().equals(that.getExpert()) : that.getExpert() == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (startTs != null ? startTs.hashCode() : 0);
-        result = 31 * result + (endTs != null ? endTs.hashCode() : 0);
-        result = 31 * result + (organization != null ? organization.hashCode() : 0);
-        result = 31 * result + (office != null ? office.hashCode() : 0);
-        result = 31 * result + (expert != null ? expert.hashCode() : 0);
+        int result = getId() != null ? getId().hashCode() : 0;
+        result = 31 * result + getYear();
+        result = 31 * result + (getStartTs() != null ? getStartTs().hashCode() : 0);
+        result = 31 * result + (getEndTs() != null ? getEndTs().hashCode() : 0);
+        result = 31 * result + (isAppointment() ? 1 : 0);
+        result = 31 * result + (isSchedule() ? 1 : 0);
+        result = 31 * result + (isAvailable() ? 1 : 0);
+        result = 31 * result + (getOrganization() != null ? getOrganization().hashCode() : 0);
+        result = 31 * result + (getOffice() != null ? getOffice().hashCode() : 0);
+        result = 31 * result + (getExpert() != null ? getExpert().hashCode() : 0);
         return result;
     }
 
@@ -120,8 +220,12 @@ public class Availability implements Serializable {
     public String toString() {
         return "Availability{" +
             "id='" + id + '\'' +
+            ", year=" + year +
             ", startTs=" + startTs +
             ", endTs=" + endTs +
+            ", appointment=" + appointment +
+            ", schedule=" + schedule +
+            ", available=" + available +
             ", organization=" + organization +
             ", office=" + office +
             ", expert=" + expert +

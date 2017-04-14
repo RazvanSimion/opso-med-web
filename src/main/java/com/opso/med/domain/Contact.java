@@ -57,6 +57,7 @@ public class Contact implements Serializable {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+    public Contact phone(String phone) {this.phone = phone; return this;}
 
     public String getFax() {
         return fax;
@@ -73,6 +74,7 @@ public class Contact implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+    public Contact email(String email) {this.email = email; return this;}
 
     public String getName() {
         return name;
@@ -81,6 +83,7 @@ public class Contact implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+    public Contact name(String name) {this.name = name; return this;}
 
     public String getAddress() {
         return address;

@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -86,12 +87,22 @@ public class Investigation {
         this.startTs = startTs;
     }
 
+    public Investigation startTs(LocalDateTime startTs) {
+        this.startTs = startTs;
+        return this;
+    }
+
     public LocalDateTime getEndTs() {
         return endTs;
     }
 
     public void setEndTs(LocalDateTime endTs) {
         this.endTs = endTs;
+    }
+
+    public Investigation endTs(LocalDateTime endTs) {
+        this.endTs = endTs;
+        return this;
     }
 
     public Long getStatus() {
@@ -102,12 +113,22 @@ public class Investigation {
         this.status = status;
     }
 
+    public Investigation status(Long status) {
+        this.status = status;
+        return this;
+    }
+
     public String getType() {
         return type;
     }
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Investigation type(String type) {
+        this.type = type;
+        return this;
     }
 
     public Organization getOrganization() {
@@ -118,12 +139,21 @@ public class Investigation {
         this.organization = organization;
     }
 
+    public Investigation organization(Organization organization) {
+        this.organization = organization;
+        return this;
+    }
     public Office getOffice() {
         return office;
     }
 
     public void setOffice(Office office) {
         this.office = office;
+    }
+
+    public Investigation office(Office office) {
+        this.office = office;
+        return this;
     }
 
     public Set<JobService> getServices() {
@@ -134,6 +164,11 @@ public class Investigation {
         this.services = services;
     }
 
+    public Investigation services(Set<JobService> services) {
+        this.services = services;
+        return this;
+    }
+
     public ExpertRef getExpert() {
         return expert;
     }
@@ -142,12 +177,22 @@ public class Investigation {
         this.expert = expert;
     }
 
+    public Investigation expert(ExpertRef expert) {
+        this.expert = expert;
+        return this;
+    }
+
     public CustomerRef getCustomer() {
         return customer;
     }
 
     public void setCustomer(CustomerRef customer) {
         this.customer = customer;
+    }
+
+    public Investigation customer(CustomerRef customer) {
+        this.customer = customer;
+        return this;
     }
 
     public Appointment getAppointment() {
@@ -223,12 +268,12 @@ public class Investigation {
             ", endTs=" + endTs +
             ", status=" + status +
             ", type='" + type + '\'' +
-            ", organization=" + organization +
-            ", office=" + office +
+            ", organization=" + Optional.ofNullable(organization).map(Organization::toString).orElse("null") +
+            ", office=" + Optional.ofNullable(office).map(Office::toString).orElse("null") +
             ", services=" + services +
-            ", expert=" + expert +
-            ", customer=" + customer +
-            ", appointment=" + appointment +
+            ", expert=" + Optional.ofNullable(expert).map(ExpertRef::toString).orElse("null") +
+            ", customer=" + Optional.ofNullable(customer).map(CustomerRef::toString).orElse("null") +
+            ", appointment=" + Optional.ofNullable(appointment).map(Appointment::toString).orElse("null") +
             ", documents=" + documents +
             ", notes=" + notes +
             '}';

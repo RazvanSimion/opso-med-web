@@ -10,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Service Implementation for managing Domain.
  */
@@ -45,6 +47,13 @@ public class CustomerService {
     public Page<Customer> findAll(Pageable pageable) {
         log.debug("Request to get all Entities");
         Page<Customer> result = customerRepository.findAll(pageable);
+        return result;
+    }
+
+
+    public List<Customer> findAll() {
+        log.debug("Request to get all Entities");
+        List<Customer> result = customerRepository.findAll();
         return result;
     }
 

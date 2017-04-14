@@ -15,6 +15,7 @@ import java.util.List;
  * Spring Data MongoDB repository for the Appointment entity.
  */
 public interface AppointmentRepository extends MongoRepository<Appointment, String> {
+
     @Query("{ 'expert._id' : ?0 }")
     List<Appointment> findByExpertId(ObjectId expertId);
 

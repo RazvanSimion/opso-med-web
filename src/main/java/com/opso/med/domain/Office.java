@@ -59,12 +59,22 @@ public class Office {
         this.name = name;
     }
 
+    public Office name(String name) {
+        this.name = name;
+        return this;
+    }
+
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Office description(String description) {
+        this.description = description;
+        return this;
     }
 
     public double[] getPosition() {
@@ -75,6 +85,11 @@ public class Office {
         this.position = position;
     }
 
+    public Office position(double[]  position) {
+        this.position = position;
+        return this;
+    }
+
     public Set<Contact> getContacts() {
         return contacts;
     }
@@ -83,12 +98,22 @@ public class Office {
         this.contacts = contacts;
     }
 
+    public Office contacts(Set<Contact> contacts) {
+        this.contacts = contacts;
+        return this;
+    }
+
     public Organization getOrganization() {
         return organization;
     }
 
     public void setOrganization(Organization organization) {
         this.organization = organization;
+    }
+
+    public Office organization(Organization organization) {
+        this.organization = organization;
+        return this;
     }
 
     @Override

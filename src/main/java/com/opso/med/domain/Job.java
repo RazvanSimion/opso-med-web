@@ -25,7 +25,7 @@ public class Job {
     private Set<Schedule> schedules;
 
     @Field("services")
-    private JobService services;
+    private Set<JobService> services;
 
 
     public String getId() {
@@ -44,6 +44,11 @@ public class Job {
         this.office = office;
     }
 
+    public Job office(Office office) {
+        this.office = office;
+        return this;
+    }
+
     public Set<Schedule> getSchedules() {
         return schedules;
     }
@@ -52,12 +57,23 @@ public class Job {
         this.schedules = schedules;
     }
 
-    public JobService getServices() {
+    public Job schedules(Set<Schedule> schedules) {
+        this.schedules = schedules;
+        return this;
+    }
+
+    public Set<JobService> getServices() {
         return services;
     }
 
-    public void setServices(JobService services) {
+    public Job setServices(Set<JobService> services) {
         this.services = services;
+        return this;
+    }
+
+    public Job services(Set<JobService> services) {
+        this.services = services;
+        return this;
     }
 
     @Override

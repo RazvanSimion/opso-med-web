@@ -31,6 +31,14 @@ public class OfficeRef {
     public OfficeRef() {
     }
 
+    public OfficeRef(Office office) {
+        this.id = office.getId();
+        this.name = office.getName();
+        this.description = office.getDescription();
+        this.position = office.getPosition();
+        this.organization = office.getOrganization();
+    }
+
     public OfficeRef(String id, String name, String description, double[] position, Organization organization) {
         this.id = id;
         this.name = name;

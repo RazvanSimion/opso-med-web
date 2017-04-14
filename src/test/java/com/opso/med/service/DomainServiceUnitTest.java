@@ -3,6 +3,8 @@ package com.opso.med.service;
 import com.opso.med.OpsomedApp;
 import com.opso.med.config.Constants;
 import com.opso.med.domain.Domain;
+import com.opso.med.domain.Expert;
+import com.opso.med.domain.TestConstants;
 import com.opso.med.domain.User;
 import com.opso.med.repository.UserRepository;
 import com.opso.med.service.dto.UserDTO;
@@ -10,6 +12,7 @@ import com.opso.med.service.util.RandomUtil;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +30,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 /**
@@ -44,23 +48,22 @@ public class DomainServiceUnitTest {
 
     private final Logger log = LoggerFactory.getLogger(DomainServiceUnitTest.class);
 
-    private DomainServiceTestHelper domainServiceTestHelper;
+    @Mock
+    private Domain domain;
 
     @Before
     public void setup() {
-        this.domainServiceTestHelper = new DomainServiceTestHelper(domainService);
+        MockitoAnnotations.initMocks(this);
+        domain = mock(Domain.class);
+        when(domain.getName()).thenReturn(TestConstants.DOMAIN_NAME);
+        when(domain.getDescription()).thenReturn(TestConstants.DOMAIN_NAME);
     }
 
     @Test
     public void createSuccessfuly() {
-        Domain domain = domainServiceTestHelper.create();
+        domainService.save(domain);
         log.info(domain.toString());
-        assertThat(domain).isNotNull();
-    }
 
-    @Test
-    public void findAllSuccessfuly() {
-        domainServiceTestHelper.create();
-        assertThat(domainServiceTestHelper.findAll().size()).isEqualTo(2);
+        assertThat(domainService.findAll().size()).isEqualTo(2);
     }
 }

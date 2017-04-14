@@ -59,12 +59,22 @@ public class Customer implements Serializable {
         this.code = code;
     }
 
+    public Customer code(String code) {
+        this.code = code;
+        return this;
+    }
+
     public String getLastName() {
         return lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Customer lastName(String lastName) {
+        this.lastName = lastName;
+        return this;
     }
 
     public String getFirstName() {
@@ -75,12 +85,22 @@ public class Customer implements Serializable {
         this.firstName = firstName;
     }
 
+    public Customer firstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
     public Contact getContact() {
         return contact;
     }
 
     public void setContact(Contact contact) {
         this.contact = contact;
+    }
+
+    public Customer contact(Contact contact) {
+        this.contact = contact;
+        return this;
     }
 
     @Override

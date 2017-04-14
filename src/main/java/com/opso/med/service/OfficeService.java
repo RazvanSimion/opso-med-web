@@ -10,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Service Implementation for managing Domain.
  */
@@ -47,6 +49,14 @@ public class OfficeService {
         Page<Office> result = officeRepository.findAll(pageable);
         return result;
     }
+
+
+    public List<Office> findAll() {
+        log.debug("Request to get all Entities");
+        List<Office> result = officeRepository.findAll();
+        return result;
+    }
+
 
     /**
      *  Get one Entity by id.

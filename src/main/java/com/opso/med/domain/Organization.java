@@ -45,12 +45,22 @@ public class Organization {
         this.name = name;
     }
 
+    public Organization name(String name) {
+        this.name = name;
+        return this;
+    }
+
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Organization description(String description) {
+        this.description = description;
+        return this;
     }
 
     @Override
