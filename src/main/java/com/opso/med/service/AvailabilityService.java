@@ -124,6 +124,22 @@ public class AvailabilityService {
                 });
             }
         );
+    }
+
+    /**
+     * The expert will create/update a new entry in schedules. The system must update the availabilities accordingly:
+     *
+     * 1. Week-Day opened
+     *  - The system will gather all schedules for current expert/office that have the same weekday
+     *  - For each interval in the scheduled interval the system will upsert it if the entry has no appointments. If it has an appointment, it will let it be.
+     *  - The system will inactivate the availabilities with no appointment that are in that weekday, but in other interval. If there are availabilities with appointments, the system must warn  the expert about them.
+     *
+     *  2. Specific day - The same treatment,
+     *
+     * @param schedule
+     * @return void
+     */
+    public void applySchedule(Schedule schedule) {
 
     }
 

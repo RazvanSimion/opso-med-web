@@ -104,26 +104,6 @@ public class AvailabilityServiceIntTest {
     }
 
     @Test
-    public void initDataSuccessfuly() {
-        assertThat(organizationService.findAll().size()).isGreaterThan(0);
-        assertThat(officeService.findAll().size()).isGreaterThan(0);
-        assertThat(expertService.findAll().size()).isGreaterThan(0);
-    }
-
-    @Test
-    public void sundayIsClosed() {
-        // There is not entry in availability for mondays in the current week.
-    }
-
-    @Test
-    public void mondayFrom8To19IsOpenened() {
-        // For all mondays from current week we will find all intervals from 08-19
-
-        // For all mondays from current week we will not find intervals outside the  interval 08-19
-
-    }
-
-    @Test
     public void initYearSuccessfully() {
         Year currentYear = Year.now();
 
@@ -140,4 +120,49 @@ public class AvailabilityServiceIntTest {
         assertThat(availabilityList.size()).isEqualTo(noDays * 16);
     }
 
+    /**
+     * The expert inserts one new schedule entry for monday working hours 08:00-12:00.
+     * In the system, the expert has no prior schedules configured for monday and no appointments.
+     */
+    @Test
+    public void applyOneWeekDaySuccessfully(){
+
+    }
+
+    /**
+     * The expert inserts one new schedule entry for monday working hours 08:00-12:00.
+     * In the system, the expert already has a Monday schedule for 13:00 to 16:00.
+     * The expert has no appointments.
+     */
+    @Test
+    public void applyOneWeekDayOverExistingWeekDaySuccessfully(){
+
+    }
+
+
+    /**
+     * The expert inserts one new schedule entry for monday working hours 08:00-12:00.
+     * In the system, the expert already has a Monday schedule for 13:00 to 16:00 and
+     * an exception for the next monday (it doesn't work in the next monday - full day).
+     * The expert has no appointments.
+     */
+    @Test
+    public void applyOneWeekDayOverExistingWeekDayAndExceptionsSuccessfully(){
+
+    }
+
+    /**
+     * The expert inserts one new schedule entry for monday working hours 08:00-12:00.
+     * In the system, the expert already has a Monday schedule for 13:00 to 16:00 and
+     * an exception for the next monday (it doesn't work in the next monday).
+     * The expert has four appointments in one monday.
+     *  - One with interval 12:00-13:00
+     *  - One with interval 09:00-10:00
+     *  - One with interval 14:00-15:00
+     *  - One with interval 17:00-18:00.
+     */
+    @Test
+    public void applyOneWeekDayOverExistingWeekDayAndExceptionsAndAppointmentsSuccessfully(){
+
+    }
 }

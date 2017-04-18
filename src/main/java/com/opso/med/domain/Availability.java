@@ -29,6 +29,11 @@ public class Availability implements Serializable {
 
     @NotNull
     @Indexed
+    @Field("week_day")
+    private int weekDay;
+
+    @NotNull
+    @Indexed
     @Field("start_ts")
     private LocalDateTime startTs;
 
@@ -180,6 +185,18 @@ public class Availability implements Serializable {
         return this;
     }
 
+    public int getWeekDay() {
+        return weekDay;
+    }
+
+    public Availability weekDay(int weekDay) {
+        this.weekDay = weekDay;
+        return this;
+    }
+    public void setWeekDay(int weekDay) {
+        this.weekDay = weekDay;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -188,6 +205,7 @@ public class Availability implements Serializable {
         Availability that = (Availability) o;
 
         if (getYear() != that.getYear()) return false;
+        if (getWeekDay() != that.getWeekDay()) return false;
         if (isAppointment() != that.isAppointment()) return false;
         if (isSchedule() != that.isSchedule()) return false;
         if (isAvailable() != that.isAvailable()) return false;
@@ -205,6 +223,7 @@ public class Availability implements Serializable {
     public int hashCode() {
         int result = getId() != null ? getId().hashCode() : 0;
         result = 31 * result + getYear();
+        result = 31 * result + getWeekDay();
         result = 31 * result + (getStartTs() != null ? getStartTs().hashCode() : 0);
         result = 31 * result + (getEndTs() != null ? getEndTs().hashCode() : 0);
         result = 31 * result + (isAppointment() ? 1 : 0);
@@ -221,6 +240,7 @@ public class Availability implements Serializable {
         return "Availability{" +
             "id='" + id + '\'' +
             ", year=" + year +
+            ", weekDay=" + weekDay +
             ", startTs=" + startTs +
             ", endTs=" + endTs +
             ", appointment=" + appointment +
